@@ -7,3 +7,8 @@
 # RUNNING RABIT MQ
 ![rabbitmq1.png](image/rabbitmq1.png)
 
+# SENDING AND PROCESSING EVENT
+![](image/log1.png)
+When I run the subscriber first (cargo run in the subscriber directory), it starts listening for messages on the user_created queue. Running the publisher next (cargo run in the publisher directory) sends messages to the queue. Since the subscriber is already listening, it immediately receives these messages as they arrive and handles them using the UserCreatedHandler. The handler's handle function is invoked for each message, printing a confirmation that it has been received along with the message details.
+
+This is basically demonstrates a functional message queue system where messages can be asynchronously sent by a publisher and received by a subscriber. All of this managed through a messaging protocol (AMQP) and handled according to custom logic defined in Rust.
