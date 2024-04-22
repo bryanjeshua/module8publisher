@@ -12,3 +12,7 @@
 When I run the subscriber first (cargo run in the subscriber directory), it starts listening for messages on the user_created queue. Running the publisher next (cargo run in the publisher directory) sends messages to the queue. Since the subscriber is already listening, it immediately receives these messages as they arrive and handles them using the UserCreatedHandler. The handler's handle function is invoked for each message, printing a confirmation that it has been received along with the message details.
 
 This is basically demonstrates a functional message queue system where messages can be asynchronously sent by a publisher and received by a subscriber. All of this managed through a messaging protocol (AMQP) and handled according to custom logic defined in Rust.
+
+# MONITORING CHART BASED ON PUBLISHER
+![](image/rabbitmq2.png)
+The spikes in the message rates are related to the periods when the publisher sends a batch of messages. Each spike represents a surge in the number of messages being processed by RabbitMQ at that particular moment. These spikes occur because the publisher rapidly injects multiple messages into the system. It leads to a temporary increase in the message rate as RabbitMQ receives and queues these messages for delivery to subscribers.
